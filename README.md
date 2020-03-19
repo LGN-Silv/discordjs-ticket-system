@@ -1,48 +1,75 @@
-# Welcome to the Vague documentation
+# Commands
 
-A simple fast and fun bot
+On this page, we'll use the default prefix of `+`. Of course, your server prefix may have been changed on the web interface. In any case, add the correct prefix before starting a command.
 
-## How does it work? <a id="how-does-it-work"></a>
+{% tabs %}
+{% tab title="Users" %}
+| Command | Explanation |
+| :--- | :--- |
+| `+help` | Show a list of commands or details of the specified command. |
+| `+server-info` | Get the server online logs, and webpages about a specific user. |
+| `+invite` | Get a bot invite link [to install VagueAgency on your server](https://discordapp.com/api/oauth2/authorize?client_id=655188952969379884&permissions=8&scope=bot) |
+| `+info` | Show some information about the bot like the author and essential commands |
+| `+whois` | Show user information. |
+| `+ping` | Check the health of the connection between the bot and Discord. |
+| `+channelinfo` | Run a quick check of the bot permissions on the channel, useful to figure out why the bot isn't working properly. |
+| `+weather [city]` | Say something! |
+| `+say` | Shows role information |
+| `+translate [from] [to] [text to translate]` | ex- `+translate en ja Hello world`. Note `+t` and `+ts` can be used instead of `translate` |
+| `+code` | Suggest a feature to add to the bot. Can also be used to report bugs. |
+| `+tweet` `(username) (content)` | Fun twitter template command |
+| `+meme` | This commands is used for Some Fresh Memes |
+| `+dog` | This command is used for a Fresh picture of a Dog |
+| `+joke` | Random Joke |
+| `+hack` | A fake hack command. |
+{% endtab %}
 
-The automoderator works by calculating a multiplicator, that represents how likely a user has a tendency to spam. Using multiple data points, such as the Discord Nitro status of the user, the account age and how long ago the user joined, GetBeaned is able to have a pretty good estimate of the spam-potential of an user.
+{% tab title="Moderatorion" %}
+Moderators can also use any command Trusted users can.
 
-After calculating the multiplicator, GetBeaned will then look at the specific message to determine if it could be considered as spam, using factors such as the presence of CAPS, swear words, failed @everyone pings, etc.
+| Command | Explanation |
+| :--- | :--- |
+| `+ban {user}<reason>` | Ban the users provided in the command, with an optional reason. |
+| `+setupmute` | Setup Mute roles for Mute cmd. |
+| `+kick {user}` | Kick the users from your server. They will be able to rejoin using a new invite link. |
+| `+mute {users} <duration>` | Mute users on the server. They won't be able to speak until unmuted or until they leave and rejoin the server. **This command requires a specific GetBeaned\_Muted role, that can be setup by server admins with the `+create_muted_role` command.** |
+| `+unmute {muted_user} <reason>` | Remove the GetBeaned\_Muted role from users, to let them talk again. |
+| `+unban {banned_user}` | Unban users from your server. They'll be able to rejoin using a new invite. |
+| `+purge <amount>` | Purge messages. |
+| `+nuke` | Purge all messages in a channel. |
+| `+prefix (prefix)` | sets a server-specific prefix |
+{% endtab %}
 
-Finally, by multiplying the multiplicator and the message score, GetBeaned applies actions corresponding to the specific total score.
+{% tab title="Music" %}
+Admins can also use any command Moderators can.
 
-multiplicator∗message score=message total scoremultiplicator \* message\ score = message\ total\ scoremultiplicator∗message score=message total score
-
-## What does that mean in practice? <a id="what-does-that-mean-in-practice"></a>
-
-Have you ever been on a server, and then tried to send messages quickly one after another or just with a few CAPITAL letters, only to see it get removed by a very strict moderation bot, while, at the same time in another channel, a user is spamming mentions without getting banned? Well, if you don't want that to happen on your server, **GetBeaned is the solution!**
-
-A user that has just joined and tries to post invite links should be treated as a spammer while a trusted user that has been present for a year shouldn't. And that's what the GetBeaned AutoModerator does.
-
-## More information on the bot configuration. <a id="more-information-on-the-bot-configuration"></a>
-
-You can configure GetBeaned on the webinterface by logging in with Discord. The defaults provided are quite good, just enabling Thresholds and Automod should get you started!
-
-More settings are provided for advanced configuration. For best performance and to minimise the risk of false positives, we recommend enabling AutoMod and Thresholds, then enable AutoInspect and AutoTriggers as needed.
-
-But, if you need, more than 60 settings are available. So, customising the bot shouldn't be a problem.
-
-## Need support? <a id="need-support"></a>
-
-Not a problem, we are here to help on the [support server](https://discordapp.com/invite/cPbhK53)​
-
-## Contributing: <a id="contributing"></a>
-
-### If you are a developer: <a id="if-you-are-a-developer"></a>
-
-The bot code is open-sourced on [GitHub](https://github.com/getbeaned) and Pull Requests are welcomed with great pleasure. An API is available on request to access the data on the GetBeaned website to improve overall detection. Please contact Eyesofcreeper\#0001 if you are interested.
-
-### If you are a Discord server owner: <a id="if-you-are-a-discord-server-owner"></a>
-
-Please [install the bot]() and spread the word. Don't forget to report spambots or new types of spam that aren't currently detected by the GetBeaned algorithms.
-
-### If you are a Discord user: <a id="if-you-are-a-discord-user"></a>
-
-If my bot has helped you, [donations](https://www.paypal.me/duckduckhunt) are welcome to help fund the server costs! If you find any bugs, feel free to report them on the support server or contact me on Discord : Eyesofcreeper\#0001
-
-​
+| Command | Explanation |  |  |
+| :--- | :--- | :--- | :--- |
+| `+lyrics [song name]` | shows the lyrics to the currently-playing song |  |  |
+| `+nowplaying` | shows the song that is currently playing. |  |  |
+| \`+play &lt;title | URL | subcommand&gt;\` | plays the provided song |
+| `+playlists` | shows the available playlists |  |  |
+| `+queue [pagenum]` | shows the current queue |  |  |
+| `+remove` | removes a song from the queue |  |  |
+| `+search <query>` | searches Youtube for a provided query |  |  |
+| `+scsearch <query>` | searches Soundcloud for a provided query |  |  |
+| `+shuffle` | shuffles songs you have added |  |  |
+| `+skip` | votes to skip the current song |  |  |
+| **DJ:** |  |  |  |
+| `+forceremove <user>` | removes all entries by a user from the queue |  |  |
+| `+forceskip` | skips the current song |  |  |
+| `+movetrack <from> <to>` | move a track in the current queue to a different position |  |  |
+| `+pause` | pauses the current song |  |  |
+| \`+playnext &lt;title | url&gt;\` | plays a single song next |  |
+| \`+repeat \[on | off\]\` | re-adds music to the queue when finished |  |
+| `+skipto <position>` | skips to the specified song |  |  |
+| `+stop` | stops the current song and clears the queue |  |  |
+| `+volume [0-150]` | sets or shows volume |  |  |
+| **Admin:** |  |  |  |
+| \`+setdj &lt;rolename | none&gt;\` | sets the DJ role for certain music commands |  |
+| \`+settc &lt;channel | none&gt;\` | sets the text channel for music commands |  |
+| \`+setvc &lt;channel | none&gt;\` | sets the voice channel for playing music |  |
+|  |  |  |  |
+{% endtab %}
+{% endtabs %}
 
