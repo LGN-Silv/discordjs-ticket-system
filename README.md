@@ -1,90 +1,48 @@
-# Discord.JS Ticket System
+# Welcome to the Vague documentation
 
-## Introduction
-----
+A simple fast and fun bot
 
-This is the code based off of my Discord Ticket Bot System 2020 series. Playlist link can be found down below:
+## How does it work? <a id="how-does-it-work"></a>
 
-### [Link to Playlist](https://www.youtube.com/watch?v=_bQiCme1dks&list=PL_cUvD4qzbkzn4_e5rHz9EIFymZH6tciR)
+The automoderator works by calculating a multiplicator, that represents how likely a user has a tendency to spam. Using multiple data points, such as the Discord Nitro status of the user, the account age and how long ago the user joined, GetBeaned is able to have a pretty good estimate of the spam-potential of an user.
 
-Of course, anyone is free to just clone this repository and use this code however they want. You may read down below on how to set up this bot to get it to work for you, or you can watch the playlist.
+After calculating the multiplicator, GetBeaned will then look at the specific message to determine if it could be considered as spam, using factors such as the presence of CAPS, swear words, failed @everyone pings, etc.
 
----
-## Installation & Setup
+Finally, by multiplying the multiplicator and the message score, GetBeaned applies actions corresponding to the specific total score.
 
-1) Clone this repository. `git clone https://github.com/ansonfoong/discordjs-ticket-system.git`
+multiplicator∗message score=message total scoremultiplicator \* message\ score = message\ total\ scoremultiplicator∗message score=message total score
 
+## What does that mean in practice? <a id="what-does-that-mean-in-practice"></a>
 
-2) Run `npm install`
-- This will install 4 dependencies (discord.js, dotenv, sequelize, and mysql2), and 1 dev dependency (nodemon).
-- To install without nodemon or any dev dependencies, run `npm install --only=prod`
+Have you ever been on a server, and then tried to send messages quickly one after another or just with a few CAPITAL letters, only to see it get removed by a very strict moderation bot, while, at the same time in another channel, a user is spamming mentions without getting banned? Well, if you don't want that to happen on your server, **GetBeaned is the solution!**
 
-3) Make sure to download and install MySQL server. This project uses MySQL for a database.
+A user that has just joined and tries to post invite links should be treated as a spammer while a trusted user that has been present for a year shouldn't. And that's what the GetBeaned AutoModerator does.
 
----
-## Setting up Database
+## More information on the bot configuration. <a id="more-information-on-the-bot-configuration"></a>
 
-1) Make sure you have MySQL server installed. During the installation process you will be prompted to enter a password for `root` user. 
+You can configure GetBeaned on the webinterface by logging in with Discord. The defaults provided are quite good, just enabling Thresholds and Automod should get you started!
 
-2) It is not recommended to use `root` user at all, and preserve it for very special and important cases. So you should create a separate user account and grant it privileges. We will not go over that, just google "how to make user in mysql"
+More settings are provided for advanced configuration. For best performance and to minimise the risk of false positives, we recommend enabling AutoMod and Thresholds, then enable AutoInspect and AutoTriggers as needed.
 
-3) Create a database, you can call it whatever you want.
+But, if you need, more than 60 settings are available. So, customising the bot shouldn't be a problem.
 
-4) You don't need to create a table, we will let Sequelize set all of that up for us.
+## Need support? <a id="need-support"></a>
 
+Not a problem, we are here to help on the [support server](https://discordapp.com/invite/cPbhK53)​
 
----
-## Setting up Environment Variables
+## Contributing: <a id="contributing"></a>
 
-You'll notice there are 4 environment variables being used. 
-- `process.env.BOT_TOKEN`
-- `process.env.DB_NAME`
-- `process.env.DB_USER`
-- `process.env.DB_PASS`
+### If you are a developer: <a id="if-you-are-a-developer"></a>
 
-BOT_TOKEN contains the value of the bot token.
+The bot code is open-sourced on [GitHub](https://github.com/getbeaned) and Pull Requests are welcomed with great pleasure. An API is available on request to access the data on the GetBeaned website to improve overall detection. Please contact Eyesofcreeper\#0001 if you are interested.
 
-DB_NAME contains the name of our MySQL database.
+### If you are a Discord server owner: <a id="if-you-are-a-discord-server-owner"></a>
 
-DB_USER contains the name of our user account.
+Please [install the bot]() and spread the word. Don't forget to report spambots or new types of spam that aren't currently detected by the GetBeaned algorithms.
 
-DB_PASS contains the name of our user account's password
+### If you are a Discord user: <a id="if-you-are-a-discord-user"></a>
 
-Make sure to create a `.env` file in the root of the directory. Your `.env` should be in the same folder as the `src` folder. Your directory structure should look something like this:
+If my bot has helped you, [donations](https://www.paypal.me/duckduckhunt) are welcome to help fund the server costs! If you find any bugs, feel free to report them on the support server or contact me on Discord : Eyesofcreeper\#0001
 
-```
-/src
-    /database
-        database.js
-    /models
-        Ticket.js
-    bot.js
-.env
-.gitignore
-```
+​
 
-Inside the `.env` file, set up your environment variables. We need four.
-
-```
-# Inside .env file
-BOT_TOKEN=YOUR TOKEN
-DB_NAME=MYDBNAME
-DB_USER=ANSON
-DB_PASS=PASS
-```
-
-You want to make sure you set DB_NAME to the name of the database that you created earlier. DB_USER and DB_PASS are your database's credentials. You may use root but it's not recommended.
-
----
-
-## Running
-
-Once you have followed all instructions, you should be able to type `npm run dev` (if you have nodemon) or `npm run start`, and the bot should log in and Sequelize should create the Tickets table for you.
-
----
-
-## Conclusion
-
-If there are any bugs with this bot or you may think of something clever to add, please feel free to open an issue.
-
-You may reach me on Discord at https://discord.gg/jHYMBFZ
